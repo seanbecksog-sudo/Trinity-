@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trinity Command Center | Seanbecksog</title>
+    <style>
+        body { background: #0a0a0a; color: #00ff00; font-family: monospace; padding: 20px; }
+        .panel { border: 1px solid #00ff00; padding: 20px; margin-bottom: 20px; }
+        .status { color: #ffffff; font-weight: bold; }
+        .blink { animation: blinker 1s linear infinite; color: red; }
+        @keyframes blinker { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+    <h1>THE TRINITY PROTOCOL: LIVE TELEMETRY</h1>
+    <div class="panel">
+        <p>SYSTEM AUTHORITY: <span class="status">SEAN [SURNAME]</span></p>
+        <p>BIO-PULSE CONNECTION: <span class="status">VERIFIED (100%)</span></p>
+        <p>SENTINEL STATE: <span class="status">LISTENING...</span></p>
+    </div>
+    <div class="panel">
+        <h3>LIVE EVENT LOG</h3>
+        <p id="log">[LOG]: Initializing Secure Universal Tunnel...</p>
+        <p id="log">[LOG]: Trinity Interceptor Coating Active.</p>
+    </div>
+    <script>
+        // In the full build, this connects to your phone's API
+        console.log("Trinity Dashboard Online.");
+    </script>
+</body>
+</html>
