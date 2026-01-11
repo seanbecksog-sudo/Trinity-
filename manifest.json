@@ -1,17 +1,35 @@
-{
-  "project_name": "The Trinity Protocol",
-  "architect": "Sean [Surname]",
-  "version": "1.0.0-PROPRIETARY",
-  "core_logic": {
-    "pillar_1": "Bio-Pulse_Anchor",
-    "pillar_2": "Atomic-Time_Sync",
-    "pillar_3": "Geospatial_Lock"
-  },
-  "sentinel_status": "Active_Background_Listener",
-  "licensing": {
-    "type": "Royalty-Based",
-    "rate_per_device_usd": 10.00,
-    "authority_contact": "Seanbecksog@gmail.com"
-  },
-  "security_level": "Sovereign_Kernel_Overlay"
-}
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/xml/android"
+    package="com.trinity.protocol">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+    <uses-permission android:name="android.permission.BIND_VPN_SERVICE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="TRINITY"
+        android:theme="@style/Theme.Trinity">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".SovereignInterceptor"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
+
+    </application>
+</manifest>
