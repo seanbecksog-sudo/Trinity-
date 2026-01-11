@@ -1,35 +1,32 @@
-package com.trinity.interceptor;
+package com.trinity.protocol
 
-import android.accessibilityservice.AccessibilityService;
-import android.view.accessibility.AccessibilityEvent;
+import android.net.VpnService
+import android.content.Intent
+import android.os.ParcelFileDescriptor
 
-/**
- * THE TRINITY PROTOCOL: SOVEREIGN INTERCEPTOR
- * The "Coating" layer that protects third-party apps with the Trinity Shield.
- */
-public class SovereignInterceptor extends AccessibilityService {
+class SovereignInterceptor : VpnService() {
 
-    @Override
-    public void onAccessibilityEvent(AccessibilityEvent event) {
-        if (event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
-            String packageName = event.getPackageName().toString();
-            
-            if (isProtectedApp(packageName)) {
-                applyTrinityCoating();
-            }
+    private var vpnInterface: ParcelFileDescriptor? = null
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        // 1. ESTABLISH THE COATING LAYER
+        val builder = Builder()
+        
+        try {
+            vpnInterface = builder.setSession("Trinity Sovereign Protocol")
+                .addAddress("10.8.0.1", 24) // Internal secure IP
+                .addDnsServer("8.8.8.8")
+                .addRoute("0.0.0.0", 0) // Route ALL traffic through the interceptor
+                .establish()
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
+
+        return START_STICKY
     }
 
-    private boolean isProtectedApp(String pkg) {
-        // Checks against the Manifest's protected list
-        return true; 
+    override fun onDestroy() {
+        super.onDestroy()
+        vpnInterface?.close()
     }
-
-    private void applyTrinityCoating() {
-        // Instantly renders the Trinity Shield UI over the target app
-        System.out.println("TRINITY: Sovereign Coating Applied.");
-    }
-
-    @Override
-    public void onInterrupt() {}
 }
