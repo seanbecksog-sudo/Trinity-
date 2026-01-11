@@ -2,120 +2,159 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Trinity Protocol | Sovereign Architect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRINITY PROTOCOL | SECURE NODE</title>
     <style>
-        * { box-sizing: border-box; }
-        body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; overflow: hidden; }
-        
-        .hero-image {
-            background-image: linear-gradient(rgba(26, 58, 95, 0.85), rgba(26, 58, 95, 0.85)), 
-            url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=2070');
+        /* Sovereign Dark Aesthetic */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
             height: 100%;
-            background-position: center;
-            background-size: cover;
+            background-color: #050505;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
         }
 
-        .hero-text {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            padding: 40px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 50px rgba(0,0,0,0.6);
-            width: 90%;
-            max-width: 800px;
-            text-align: center;
+        /* Powerful Human Figure Background */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), 
+                        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
         }
 
+        /* Live Intel-Bar */
         .intel-bar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 15px 0;
+            background: rgba(188, 19, 254, 0.05);
+            border-bottom: 1px solid rgba(188, 19, 254, 0.3);
             display: flex;
             justify-content: space-around;
-            background: rgba(52, 152, 219, 0.2);
-            padding: 15px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-            color: #3498db;
-            border: 1px solid rgba(52, 152, 219, 0.3);
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #bc13fe;
+            text-shadow: 0 0 5px rgba(188, 19, 254, 0.5);
+            letter-spacing: 2px;
         }
 
-        h1 { font-size: 3em; letter-spacing: 10px; margin: 0; text-transform: uppercase; }
-        p.architect { font-size: 1.1em; letter-spacing: 4px; color: #fff; margin: 10px 0 30px 0; font-weight: bold; opacity: 0.9; }
-        
-        .btn-group { margin: 30px 0; }
-        .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            margin: 8px;
-            border: 1px solid #3498db;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 4px;
-            transition: 0.3s;
-            background: rgba(26, 58, 95, 0.6);
+        /* Neon UI Elements */
+        .container {
+            text-align: center;
+            z-index: 1;
         }
-        .btn:hover { background: #3498db; color: #1a3a5f; }
-        .btn.primary { background: #3498db; color: #1a3a5f; }
-        
-        .footer-info { font-size: 0.8em; color: #bdc3c7; margin-top: 20px; }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 8px;
+            color: #bc13fe;
+            text-shadow: 0 0 15px #bc13fe;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            letter-spacing: 4px;
+            color: #888;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 280px;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #bc13fe;
+            border: 1px solid #bc13fe;
+            background: rgba(188, 19, 254, 0.02);
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(188, 19, 254, 0.1);
+        }
+
+        .btn:hover {
+            background: #bc13fe;
+            color: #050505;
+            box-shadow: 0 0 25px #bc13fe;
+            cursor: pointer;
+        }
+
+        /* Footer Authority */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.7rem;
+            color: #444;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
-<body onload="startTime(); getGeo();">
+<body>
 
-<div class="hero-image">
-  <div class="hero-text">
+    <div class="hero-bg"></div>
+
     <div class="intel-bar">
-        <div>TIME: <span id="clock" style="color:white;">--:--:--</span></div>
-        <div>LOC: <span id="geo" style="color:white;">INITIALIZING...</span></div>
+        <div>SYSTEM CLOCK: <span id="clock">--:--:--</span></div>
+        <div>SECURE COORDINATES: <span id="geo">DETECTING...</span></div>
     </div>
 
-    <h1>THE TRINITY PROTOCOL™</h1>
-    <p class="architect">SOVEREIGN ARCHITECT: SEAN BEKKER</p>
-    
-    <div class="btn-group">
-        <a href="#" class="btn primary">CREATE ACCOUNT</a>
-        <a href="#" class="btn">DOWNLOAD SECURE APK</a>
-        <a href="mailto:licensing@seanbekker.com" class="btn">CONTACT FOR LICENSE</a>
+    <div class="container">
+        <h1>TRINITY</h1>
+        <div class="tagline">Encrypted User Terminal v1.0</div>
+
+        <div class="btn-group">
+            <a href="register.html" class="btn">Initialize Account</a>
+            <a href="Trinity.apk" class="btn" download>Download Secure APK</a>
+            <a href="mailto:licensing@trinity-protocol.com" class="btn">License Request</a>
+        </div>
     </div>
 
-    <div class="footer-info">
-        Standard Royalty: $10.00 USD / Device | Status: 100% Core Build Complete
+    <div class="footer">
+        128-BIT KERNEL ENCRYPTION | ANONYMOUS PEER NODE
     </div>
-  </div>
-</div>
 
-<script>
-    // Atomic Timestamp Logic
-    function startTime() {
-        const today = new Date();
-        document.getElementById('clock').innerHTML = today.toLocaleTimeString();
-        setTimeout(startTime, 1000);
-    }
-
-    // Geo Location Logic
-    function getGeo() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition, showError);
-        } else { 
-            document.getElementById('geo').innerHTML = "UNSUPPORTED";
+    <script>
+        // Real-time Intelligence Logic
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toLocaleTimeString();
         }
-    }
+        setInterval(updateClock, 1000);
+        updateClock();
 
-    function showPosition(position) {
-        document.getElementById('geo').innerHTML = 
-        position.coords.latitude.toFixed(4) + " N, " + position.coords.longitude.toFixed(4) + " E";
-    }
-
-    function showError(error) {
-        document.getElementById('geo').innerHTML = "LOCATION ACCESS DENIED";
-    }
-</script>
-
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((pos) => {
+                document.getElementById('geo').innerText = 
+                    pos.coords.latitude.toFixed(4) + ", " + pos.coords.longitude.toFixed(4);
+            }, () => {
+                document.getElementById('geo').innerText = "ENCRYPTED";
+            });
+        }
+    </script>
 </body>
 </html>
